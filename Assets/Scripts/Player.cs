@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private TerrainGenerator terrainGenerator;
+    [SerializeField] private Text scoreText;
 
     private Animator animator;
     private bool isHopping;
+    private int score;
 
     private void Start()
     {
@@ -17,11 +20,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        /*
-        Thread.Sleep(1000);
-        animator.SetTrigger("hop");
-        */
-        
+        score++;
+        scoreText.text = "Score: " + score;
         if (Input.GetKeyDown(KeyCode.K) && !isHopping)
         {
 
