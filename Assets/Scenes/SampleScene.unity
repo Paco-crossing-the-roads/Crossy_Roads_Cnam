@@ -747,6 +747,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1951411037}
+    - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: terrainGenerator
       value: 
       objectReference: {fileID: 1900575403}
