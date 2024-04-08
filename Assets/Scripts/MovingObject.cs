@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingObject : MonoBehaviour
 {
     [SerializeField] private float speed;
+    public bool isLog;
     
     private void Update()
     {

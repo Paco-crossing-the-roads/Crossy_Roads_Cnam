@@ -15,7 +15,4 @@ MonoBehaviour:
   possibleTerrain:
   - {fileID: 5085338423918316445, guid: 733c137edf156aa498bb2fa9f4d5e00f, type: 3}
   - {fileID: 7464491672178976817, guid: 769bb39179fcce349bbc0d48cf6c5a50, type: 3}
-  - {fileID: 6300697049708310756, guid: db66bf6a7ae93b84193f7da3700c2e1b, type: 3}
-  - {fileID: 1616277453619022794, guid: 6223aea35bfb44c40821594e9b77c96a, type: 3}
   maxInSuccession: 3
-  isGrass: 0

@@ -42,6 +42,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.GetComponent<MovingObject>() != null)
+        {
+            if (collision.collider.GetComponent<MovingObject>().isLog)
+            {
+                transform.parent = collision.collider.transform;
+            }
+            else
+            {
+                transform.parent = null;
+            }
+        }   
+    }
+
     private void MoveCharacter(Vector3 difference)
     {
         animator.SetTrigger("hop");
