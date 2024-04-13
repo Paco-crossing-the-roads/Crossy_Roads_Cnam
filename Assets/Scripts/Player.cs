@@ -22,23 +22,24 @@ public class Player : MonoBehaviour
     {
         score++;
         scoreText.text = "Score: " + score;
-        if (Input.GetKeyDown(KeyCode.K) && !isHopping)
+        if (!isHopping)
         {
-
-            float zDifference = 0;
-            if (transform.position.z % 1 != 0)
+            if (Input.GetKeyDown(KeyCode.K))
             {
-                zDifference = Mathf.Round(transform.position.z) - transform.position.z;
+                MoveCharacter(Vector3.right);
             }
-            MoveCharacter(new Vector3(1, 0, zDifference));
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
-        {
-            MoveCharacter(new Vector3(0, 0, 1));
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
-        {
-            MoveCharacter(new Vector3(0, 0, -1));
+            else if (Input.GetKeyDown(KeyCode.L))
+            {
+                MoveCharacter(Vector3.left);
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                MoveCharacter(Vector3.forward);
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                MoveCharacter(Vector3.back);
+            }
         }
     }
 
@@ -50,10 +51,11 @@ public class Player : MonoBehaviour
             {
                 transform.parent = collision.collider.transform;
             }
-            else
-            {
-                transform.parent = null;
-            }
+            
+        }
+        else
+        {
+            transform.parent = null;
         }   
     }
 

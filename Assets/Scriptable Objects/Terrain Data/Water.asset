@@ -16,3 +16,4 @@ MonoBehaviour:
   - {fileID: 5085338423918316445, guid: 733c137edf156aa498bb2fa9f4d5e00f, type: 3}
   - {fileID: 7464491672178976817, guid: 769bb39179fcce349bbc0d48cf6c5a50, type: 3}
   maxInSuccession: 3
+  isWater: 1
