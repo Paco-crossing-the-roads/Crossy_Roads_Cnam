@@ -20,13 +20,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        score++;
         scoreText.text = "Score: " + score;
         if (!isHopping)
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
                 MoveCharacter(Vector3.right);
+                score++;
             }
             else if (Input.GetKeyDown(KeyCode.L))
             {
