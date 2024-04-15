@@ -13,6 +13,10 @@ public class MovingObject : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        destroyIfOutOfBound();
+    }
+    private void destroyIfOutOfBound()
+    {
         if (transform.position.z > limiteZPositive || transform.position.z < limiteZNegative)
         {
             Destroy(gameObject);
