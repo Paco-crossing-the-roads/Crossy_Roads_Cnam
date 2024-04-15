@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
         animator.SetTrigger("hop");
         isHopping = true;
         transform.position = (transform.position + difference);
-        terrainGenerator.SpawnTerrain(false, transform.position);
+        terrainGenerator.SpawnTerrain(false,transform.position);
     }
 
     public void FinishHop()
