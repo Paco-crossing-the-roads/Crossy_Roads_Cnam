@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistanceFromPlayer: 20
-  maxTerrainCount: 30
+  maxTerrainCount: 25
   terrainDatas:
   - {fileID: 11400000, guid: d49dd360cb37de14da27d48a986c770b, type: 2}
   - {fileID: 11400000, guid: 84517f167f605be4bbb062500865c9b4, type: 2}
@@ -730,7 +730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: 'Score : 0'
+  m_Text: 'Score : 100'
 --- !u!222 &1951411038
 CanvasRenderer:
   m_ObjectHideFlags: 0
