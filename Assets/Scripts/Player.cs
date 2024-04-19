@@ -23,20 +23,20 @@ public class Player : MonoBehaviour
         scoreText.text = "Score: " + score;
         if (!isHopping)
         {
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 MoveCharacter(Vector3.right);
                 score++;
             }
-            else if (Input.GetKeyDown(KeyCode.L))
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 MoveCharacter(Vector3.left);
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 MoveCharacter(Vector3.forward);
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 MoveCharacter(Vector3.back);
             }
@@ -63,9 +63,23 @@ public class Player : MonoBehaviour
     {
         animator.SetTrigger("hop");
         isHopping = true;
-        transform.position = (transform.position + difference);
-        terrainGenerator.SpawnTerrain(false,transform.position);
+        int obstacleLayer = LayerMask.NameToLayer("obstacle");
+
+        if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
+        {
+            Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
+            float slideAmount = 0.2f; 
+
+            transform.position += slideDirection * slideAmount;
+            terrainGenerator.SpawnTerrain(false, transform.position);
+        }
+        else
+        {
+            transform.position = transform.position + difference;
+            terrainGenerator.SpawnTerrain(false, transform.position);
+        }
     }
+
 
     public void FinishHop()
     {
