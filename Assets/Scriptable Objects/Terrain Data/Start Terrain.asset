@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fe33fd3996901d40a535f8f38c5e99b, type: 3}
-  m_Name: Grass
+  m_Name: Start Terrain
   m_EditorClassIdentifier: 
   possibleTerrain:
-  - {fileID: 2762961431561142301, guid: e96f03a9271d5a539be16aa47e76e981, type: 3}
-  - {fileID: 3877075093607241957, guid: 938e0c4a140af164fb6c7d640f2c1b22, type: 3}
-  - {fileID: 1478535778953717776, guid: 12a8c1fc3b52e3045915babb25dd925f, type: 3}
-  maxInSuccession: 5
+  - {fileID: 2762961431561142301, guid: ac1b2e33c61033a49bf1eb1f5cba4314, type: 3}
+  maxInSuccession: 0

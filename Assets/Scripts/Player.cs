@@ -20,25 +20,26 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        score++;
         scoreText.text = "Score: " + score;
-        if (Input.GetKeyDown(KeyCode.K) && !isHopping)
+        if (!isHopping)
         {
-
-            float zDifference = 0;
-            if (transform.position.z % 1 != 0)
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                zDifference = Mathf.Round(transform.position.z) - transform.position.z;
+                MoveCharacter(Vector3.right);
+                score++;
             }
-            MoveCharacter(new Vector3(1, 0, zDifference));
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
-        {
-            MoveCharacter(new Vector3(0, 0, 1));
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
-        {
-            MoveCharacter(new Vector3(0, 0, -1));
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                MoveCharacter(Vector3.left);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                MoveCharacter(Vector3.forward);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                MoveCharacter(Vector3.back);
+            }
         }
     }
 
@@ -50,10 +51,11 @@ public class Player : MonoBehaviour
             {
                 transform.parent = collision.collider.transform;
             }
-            else
-            {
-                transform.parent = null;
-            }
+            
+        }
+        else
+        {
+            transform.parent = null;
         }   
     }
 
@@ -61,9 +63,23 @@ public class Player : MonoBehaviour
     {
         animator.SetTrigger("hop");
         isHopping = true;
-        transform.position = (transform.position + difference);
-        terrainGenerator.SpawnTerrain(false, transform.position);
+        int obstacleLayer = LayerMask.NameToLayer("obstacle");
+
+        if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
+        {
+            Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
+            float slideAmount = 0.2f; 
+
+            transform.position += slideDirection * slideAmount;
+            terrainGenerator.SpawnTerrain(false, transform.position);
+        }
+        else
+        {
+            transform.position = transform.position + difference;
+            terrainGenerator.SpawnTerrain(false, transform.position);
+        }
     }
+
 
     public void FinishHop()
     {
