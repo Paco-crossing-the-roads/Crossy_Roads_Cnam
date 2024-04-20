@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private TerrainGenerator terrainGenerator;
     [SerializeField] private Text scoreText;
 
+    public GameManagerScript gameManager;
+
     private Animator animator;
     private bool isHopping;
     private int score;
@@ -45,6 +47,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.collider.CompareTag("Evil Objects"))
+        {
+            KillPlayer();
+        }
         if (collision.collider.GetComponent<MovingObject>() != null)
         {
             if (collision.collider.GetComponent<MovingObject>().isLog)
@@ -84,5 +90,12 @@ public class Player : MonoBehaviour
     public void FinishHop()
     {
         isHopping = false;
+    }
+
+    private void KillPlayer()
+    {
+        Destroy(gameObject);
+        gameManager.GameOver();
+        Debug.Log("Player has been killed.");
     }
 }
