@@ -1,2 +1,2 @@
 # Crossy_Road_Cnam
-C'est notre repository pour le projet Crossy Road en C# avec le framework Unity
+This is our repository for the Crossy Road project in C# using the Unity framework.

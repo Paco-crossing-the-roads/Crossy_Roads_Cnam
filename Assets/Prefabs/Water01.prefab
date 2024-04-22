@@ -165,6 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 6471196678168067843, guid: 770506127c5bd4442ac20b28c8599444, type: 3}
   spawnPos: {fileID: 1760176399545283241}
-  minSeparationTime: 2
+  minSeparationTime: 1
   maxSeparationTime: 4
   isRightSide: 0

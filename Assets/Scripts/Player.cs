@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "" + score;
         if (!isHopping)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
