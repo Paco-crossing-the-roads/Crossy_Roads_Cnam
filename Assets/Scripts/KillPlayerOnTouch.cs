@@ -8,7 +8,7 @@ public class KillPlayerOnTouch : MonoBehaviour
     {
         if (collision.collider.GetComponent<Player>() != null)
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
         }
     }
 }
