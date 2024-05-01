@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                MoveCharacter(Vector3.right);
+                MoveCharacterForward(Vector3.right);
                 score++;
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -77,7 +77,28 @@ public class Player : MonoBehaviour
             float slideAmount = 0.2f; 
 
             transform.position += slideDirection * slideAmount;
-            terrainGenerator.SpawnTerrain(false, transform.position);
+            //terrainGenerator.SpawnTerrain(false, transform.position);
+        }
+        else
+        {
+            transform.position = transform.position + difference;
+            //terrainGenerator.SpawnTerrain(false, transform.position);
+        }
+    }
+
+    private void MoveCharacterForward(Vector3 difference)
+    {
+        animator.SetTrigger("hop");
+        isHopping = true;
+        int obstacleLayer = LayerMask.NameToLayer("obstacle");
+
+        if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
+        {
+            Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
+            float slideAmount = 0.2f; 
+
+            transform.position += slideDirection * slideAmount;
+            //terrainGenerator.SpawnTerrain(false, transform.position);
         }
         else
         {
