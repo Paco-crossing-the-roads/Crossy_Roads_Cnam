@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Start Terrain
   m_EditorClassIdentifier: 
   possibleTerrain:
-  - {fileID: 2762961431561142301, guid: ac1b2e33c61033a49bf1eb1f5cba4314, type: 3}
+  - {fileID: 2762961431561142301, guid: c3cc98b6d334fd04d81f243bee3a141e, type: 3}
   maxInSuccession: 0

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe33fd3996901d40a535f8f38c5e99b, type: 3}
+  m_Name: Behind Start Terrain
+  m_EditorClassIdentifier: 
+  possibleTerrain:
+  - {fileID: 2762961431561142301, guid: 12fa8839b768de74fafc022121c99ec0, type: 3}
+  maxInSuccession: 0

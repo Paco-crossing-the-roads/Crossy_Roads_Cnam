@@ -15,6 +15,13 @@ public class Player : MonoBehaviour
     private bool isHopping;
     private int score;
 
+    private enum Direction{
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -27,20 +34,20 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                MoveCharacter(Vector3.right);
+                MoveCharacterForward(Vector3.right);
                 score++;
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                MoveCharacter(Vector3.left);
+                MoveCharacter(Vector3.left, Direction.Down);
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                MoveCharacter(Vector3.forward);
+                MoveCharacter(Vector3.forward, Direction.Left);
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                MoveCharacter(Vector3.back);
+                MoveCharacter(Vector3.back, Direction.Right);
             }
         }
     }
@@ -57,15 +64,15 @@ public class Player : MonoBehaviour
             {
                 transform.parent = collision.collider.transform;
             }
-            
+
         }
         else
         {
             transform.parent = null;
-        }   
+        }
     }
 
-    private void MoveCharacter(Vector3 difference)
+    private void MoveCharacter(Vector3 difference, Direction direction)
     {
         animator.SetTrigger("hop");
         isHopping = true;
@@ -74,16 +81,60 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
         {
             Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
-            float slideAmount = 0.2f; 
+            float slideAmount = 0.2f;
 
             transform.position += slideDirection * slideAmount;
-            terrainGenerator.SpawnTerrain(false, transform.position);
+            //terrainGenerator.SpawnTerrain(false, transform.position);
+        }
+        else
+        {
+            transform.position = transform.position + difference;
+            //terrainGenerator.SpawnTerrain(false, transform.position);
+        }
+
+        // Rotate the character to face the direction of movement
+        float angle = 0;
+        switch (direction)
+        {
+            case Direction.Up:
+                angle = 0;
+                break;
+            case Direction.Down:
+                angle = 180;
+                break;
+            case Direction.Left:
+                angle = 270;
+                break;
+            case Direction.Right:
+                angle = 90;
+                break;
+        }
+        transform.rotation = Quaternion.Euler(0, angle, 0);
+    }
+
+    private void MoveCharacterForward(Vector3 difference)
+    {
+        animator.SetTrigger("hop");
+        isHopping = true;
+        int obstacleLayer = LayerMask.NameToLayer("obstacle");
+
+        if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
+        {
+            Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
+            float slideAmount = 0.2f;
+
+            transform.position += slideDirection * slideAmount;
+            //terrainGenerator.SpawnTerrain(false, transform.position);
         }
         else
         {
             transform.position = transform.position + difference;
             terrainGenerator.SpawnTerrain(false, transform.position);
         }
+
+        // Rotate the character to face the direction of movement
+        float angle = 0;
+        transform.rotation = Quaternion.Euler(0, angle, 0);
     }
 
 

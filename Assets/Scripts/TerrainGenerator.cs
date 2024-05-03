@@ -15,26 +15,31 @@ public class TerrainGenerator : MonoBehaviour
 
     private void Start()
     {
+        currentPosition.x -= 10;
         for (int i = 0; i < 4; i++)
+        {
+            InitialTerrain( new Vector3(0, 0, 0), 4);
+        }
+        for (int i = 4; i < 13; i++)
         {
             InitialTerrain( new Vector3(0, 0, 0), 3);
         }
-        
-        for (int i = 4; i < maxTerrainCount; i++)
+
+        for (int i = 13; i < maxTerrainCount; i++)
         {
             SpawnTerrain(true, new Vector3(0, 0, 0));
         }
 
         maxTerrainCount = currentTerrains.Count;
     }
-    
+
     public void InitialTerrain(Vector3 playerPos, int terrainTypeIndex)
     {
         GameObject terrain = Instantiate(terrainDatas[terrainTypeIndex].possibleTerrain[Random.Range(0, terrainDatas[terrainTypeIndex].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
         currentTerrains.Add(terrain);
         currentPosition.x++;
     }
-    
+
     public void SpawnTerrain(bool isStart, Vector3 playerPos, int terrainTypeIndex = -1)
     {
         if ((currentPosition.x - playerPos.x < minDistanceFromPlayer) || (isStart))
@@ -45,15 +50,15 @@ public class TerrainGenerator : MonoBehaviour
             {
                 GameObject terrain = Instantiate(terrainDatas[whichTerrain].possibleTerrain[Random.Range(0, terrainDatas[whichTerrain].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
                 currentTerrains.Add(terrain);
-                if (!isStart)
-                {
-                    if (currentTerrains.Count > maxTerrainCount)
-                    {
-                        Destroy(currentTerrains[0]);
-                        currentTerrains.RemoveAt(0);
-                    }
-                }
                 currentPosition.x++;
+            }
+            if (!isStart)
+            {
+                if (currentTerrains.Count > maxTerrainCount)
+                {
+                    Destroy(currentTerrains[0]);
+                    currentTerrains.RemoveAt(0);
+                }
             }
         }
     }

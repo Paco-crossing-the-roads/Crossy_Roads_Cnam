@@ -15,4 +15,5 @@ MonoBehaviour:
   possibleTerrain:
   - {fileID: 4268559350804114099, guid: 6f8de20bcc8f1464387778bab64bf05e, type: 3}
   - {fileID: 8926512082176652737, guid: c304214001b21e04297d9fb484ec8622, type: 3}
+  - {fileID: 370829304893343041, guid: 35e2c05132e8c8d4d9e9e223b6442e92, type: 3}
   maxInSuccession: 4
