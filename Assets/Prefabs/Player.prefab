@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3481350364515299193}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,8 +70,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8279374, y: 0.83651793, z: 0.5623071}
-  m_Center: {x: -0.0012216866, y: -0.081741035, z: 0.013510048}
+  m_Size: {x: 0.86197263, y: 0.8404373, z: 0.3187158}
+  m_Center: {x: -0.012216896, y: -0.09816736, z: 0.00865522}
 --- !u!95 &4216905788712623490
 Animator:
   serializedVersion: 5
