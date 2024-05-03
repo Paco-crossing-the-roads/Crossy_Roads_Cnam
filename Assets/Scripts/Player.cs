@@ -64,12 +64,12 @@ public class Player : MonoBehaviour
             {
                 transform.parent = collision.collider.transform;
             }
-            
+
         }
         else
         {
             transform.parent = null;
-        }   
+        }
     }
 
     private void MoveCharacter(Vector3 difference, Direction direction)
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
         {
             Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
-            float slideAmount = 0.2f; 
+            float slideAmount = 0.2f;
 
             transform.position += slideDirection * slideAmount;
             //terrainGenerator.SpawnTerrain(false, transform.position);
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
         {
             Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
-            float slideAmount = 0.2f; 
+            float slideAmount = 0.2f;
 
             transform.position += slideDirection * slideAmount;
             //terrainGenerator.SpawnTerrain(false, transform.position);
