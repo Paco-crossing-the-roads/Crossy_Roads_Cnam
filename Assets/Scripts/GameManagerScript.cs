@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public GlobalData globalData;
     public GameObject gameOverUI;
     // Start is called before the first frame update
     void Start()
@@ -19,5 +20,6 @@ public class GameManagerScript : MonoBehaviour
 
     public void GameOver() {
         gameOverUI.SetActive(true);
+        globalData.resetData();
     }
 }

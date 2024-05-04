@@ -6,6 +6,7 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private float smoothness;
 
+    public GlobalData globalData;
     public bool autoMove = false; // Initially set to false
     public float speed = 0.25f;
 
@@ -17,6 +18,8 @@ public class FollowPlayer : MonoBehaviour
             // Initial positioning of the camera relative to the player
             transform.position = Vector3.Lerp(transform.position, player.transform.position + offset, smoothness);
         }
+
+        Debug.Log("GlobalData from Camera Script : " + globalData.playerHasStartedMoving.ToString());
     }
 
     private void Update()
@@ -28,7 +31,7 @@ public class FollowPlayer : MonoBehaviour
                 playerHasStartedMoving = true; // Set the flag to true once the player starts moving
             }
 
-            if (autoMove && playerHasStartedMoving)
+            if (globalData.playerHasStartedMoving == true)
             {
                 // Move the camera horizontally towards the player
                 float newX = Mathf.Lerp(transform.position.x, player.transform.position.x + offset.x, Time.deltaTime * speed);

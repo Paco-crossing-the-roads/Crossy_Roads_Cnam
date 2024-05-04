@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b88cf3680c2a4af90430cf758706e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
   gameOverUI: {fileID: 1833646053}
 --- !u!4 &223447878
 Transform:
@@ -665,6 +666,7 @@ MonoBehaviour:
   player: {fileID: 922519880}
   offset: {x: 1, y: 2.4, z: -0.75}
   smoothness: 0.1
+  globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
   autoMove: 1
   speed: 0.25
 --- !u!1 &986804880
@@ -1276,6 +1278,10 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1951411037}
+    - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
+      propertyPath: globalData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
     - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: gameManager
       value: 

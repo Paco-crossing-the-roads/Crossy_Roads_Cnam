@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     public GameManagerScript gameManager;
 
+    public GlobalData globalData;
+
     private Animator animator;
     private bool isHopping;
     private int score;
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
     }
 
     private void Update()
@@ -34,7 +37,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                MoveCharacterForward(Vector3.right);
+                globalData.playerHasStartedMoving = true;
+                MoveCharacter(Vector3.right, Direction.Up);
                 score++;
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -72,8 +76,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void MoveCharacter(Vector3 difference, Direction direction)
-    {
+    private void PerformMove(Vector3 difference) {
         animator.SetTrigger("hop");
         isHopping = true;
         int obstacleLayer = LayerMask.NameToLayer("obstacle");
@@ -91,6 +94,12 @@ public class Player : MonoBehaviour
             transform.position = transform.position + difference;
             //terrainGenerator.SpawnTerrain(false, transform.position);
         }
+    }
+
+
+    private void MoveCharacter(Vector3 difference, Direction direction)
+    {
+        PerformMove(difference);
 
         // Rotate the character to face the direction of movement
         float angle = 0;
@@ -98,6 +107,7 @@ public class Player : MonoBehaviour
         {
             case Direction.Up:
                 angle = 0;
+                terrainGenerator.SpawnTerrain(false, transform.position);
                 break;
             case Direction.Down:
                 angle = 180;
@@ -111,32 +121,6 @@ public class Player : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, angle, 0);
     }
-
-    private void MoveCharacterForward(Vector3 difference)
-    {
-        animator.SetTrigger("hop");
-        isHopping = true;
-        int obstacleLayer = LayerMask.NameToLayer("obstacle");
-
-        if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
-        {
-            Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
-            float slideAmount = 0.2f;
-
-            transform.position += slideDirection * slideAmount;
-            //terrainGenerator.SpawnTerrain(false, transform.position);
-        }
-        else
-        {
-            transform.position = transform.position + difference;
-            terrainGenerator.SpawnTerrain(false, transform.position);
-        }
-
-        // Rotate the character to face the direction of movement
-        float angle = 0;
-        transform.rotation = Quaternion.Euler(0, angle, 0);
-    }
-
 
     public void FinishHop()
     {
