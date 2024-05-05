@@ -75,3 +75,6 @@ crashlytics-build.properties
 .vsconfig
 .vscode/*
 .idea/*
+Assembly-CSharp*.csproj
+CurrentMaximizeLayout.dwlt
+default-2022.dwlt
