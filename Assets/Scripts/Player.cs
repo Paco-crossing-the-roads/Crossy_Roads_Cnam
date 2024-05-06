@@ -127,6 +127,11 @@ public class Player : MonoBehaviour
         isHopping = false;
     }
 
+    void OnBecameInvisible()
+    {
+        KillPlayer();
+    }
+
     private void KillPlayer()
     {
         Destroy(gameObject);
