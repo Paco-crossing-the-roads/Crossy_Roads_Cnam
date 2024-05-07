@@ -134,8 +134,10 @@ public class Player : MonoBehaviour
 
     private void KillPlayer()
     {
-        Destroy(gameObject);
-        gameManager.GameOver();
-        Debug.Log("Player has been killed.");
+        if (gameObject != null) {
+            Destroy(gameObject);
+            gameManager.GameOver();
+            Debug.Log("Player has been killed.");
+        }
     }
 }
