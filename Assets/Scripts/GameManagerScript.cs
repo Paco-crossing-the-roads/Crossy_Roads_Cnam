@@ -1,10 +1,7 @@
 using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 public class GameManagerScript : MonoBehaviour
 {

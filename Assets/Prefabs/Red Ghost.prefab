@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1139728410453309378}
   - component: {fileID: 5650499701319632893}
   - component: {fileID: 8698644529842430207}
-  - component: {fileID: 1195326923955701332}
   m_Layer: 0
   m_Name: Red Ghost
   m_TagString: Evil Objects
@@ -124,18 +123,6 @@ MonoBehaviour:
   isLog: 0
   limiteZPositive: 25
   limiteZNegative: -25
---- !u!114 &1195326923955701332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6471196678168067843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3617bee5c309fb345bae547b5d455537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8083674852120743620
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,4 @@
 using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +14,6 @@ public class Player : MonoBehaviour
     private Animator animator;
     private bool isHopping;
     private int score;
-    //private int coinCount = 0;
     private enum Direction{
         Up,
         Down,
@@ -62,7 +58,6 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Collision detect� :" + collision.collider.tag);
         if (collision.collider.CompareTag("Evil Objects"))
         {
             KillPlayer();

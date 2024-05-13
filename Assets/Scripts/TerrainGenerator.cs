@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
@@ -20,11 +18,11 @@ public class TerrainGenerator : MonoBehaviour
         currentPosition.x -= 10;
         for (int i = 0; i < 4; i++)
         {
-            InitialTerrain( new Vector3(0, 0, 0), 4);
+            InitialTerrain(4);
         }
         for (int i = 4; i < 13; i++)
         {
-            InitialTerrain( new Vector3(0, 0, 0), 3);
+            InitialTerrain(3);
         }
 
         for (int i = 13; i < maxTerrainCount; i++)
@@ -35,7 +33,7 @@ public class TerrainGenerator : MonoBehaviour
         maxTerrainCount = currentTerrains.Count;
     }
 
-    public void InitialTerrain(Vector3 playerPos, int terrainTypeIndex)
+    public void InitialTerrain(int terrainTypeIndex)
     {
         GameObject terrain = Instantiate(terrainDatas[terrainTypeIndex].possibleTerrain[Random.Range(0, terrainDatas[terrainTypeIndex].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
         currentTerrains.Add(terrain);
