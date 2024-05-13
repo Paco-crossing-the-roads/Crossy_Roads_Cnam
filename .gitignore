@@ -76,7 +76,6 @@ crashlytics-build.properties
 .vscode/*
 .idea/*
 
-# Annoying files that should have been excluded
-Assembly-CSharp.csproj
-UserSettings/Layouts/default-2022.dwlt
-
+Assembly-CSharp*.csproj
+CurrentMaximizeLayout.dwlt
+default-2022.dwlt
