@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Collision detecté :" + collision.collider.tag);
+        //Debug.Log("Collision detectï¿½ :" + collision.collider.tag);
         if (collision.collider.CompareTag("Evil Objects"))
         {
             KillPlayer();
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
                 coinCount++;
                 if (coinScript.isSpecial)
                 {
-                    // Traitement spécial pour les pièces spéciales
+                    // Traitement spï¿½cial pour les piï¿½ces spï¿½ciales
                 }
                 Destroy(collision.gameObject);
             }
@@ -90,6 +90,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void RectifPosition() {
+        // Get the current position
+        Vector3 currentPosition = transform.position;
+
+        // Round each component of the position
+        Vector3 roundedPosition = new Vector3(
+            Mathf.RoundToInt(currentPosition.x),
+            Mathf.RoundToInt(currentPosition.y),
+            Mathf.RoundToInt(currentPosition.z)
+        );
+
+        // Apply the rounded position to the transform
+        transform.position = roundedPosition;
+    }
+
     private void PerformMove(Vector3 difference) {
         animator.SetTrigger("hop");
         isHopping = true;
@@ -100,11 +115,15 @@ public class Player : MonoBehaviour
             float slideAmount = 0.2f;
 
             transform.position += slideDirection * slideAmount;
+            
+            RectifPosition();
             //terrainGenerator.SpawnTerrain(false, transform.position);
         }
         else
         {
             transform.position = transform.position + difference;
+
+            RectifPosition();
             //terrainGenerator.SpawnTerrain(false, transform.position);
         }
     }
