@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1036149063762102712}
   - component: {fileID: 7175778726007669401}
   - component: {fileID: 8734943473395330905}
-  - component: {fileID: 8710169890591609362}
   m_Layer: 0
   m_Name: Water03
   m_TagString: Evil Objects
@@ -123,23 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3617bee5c309fb345bae547b5d455537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8710169890591609362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300697049708310756}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea46c1d635b28124ea2aee1dd05264c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnObject: {fileID: 6471196678168067843, guid: 770506127c5bd4442ac20b28c8599444, type: 3}
-  spawnPos: {fileID: 0}
-  minSeparationTime: 2
-  maxSeparationTime: 4
-  isRightSide: 1
 --- !u!1001 &306446189687415548
 PrefabInstance:
   m_ObjectHideFlags: 0

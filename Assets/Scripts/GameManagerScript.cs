@@ -1,8 +1,10 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -27,11 +29,27 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public void GameOver() {
-        gameOverUI.SetActive(true);
-        globalData.resetData();
+        try {
+            gameOverUI.SetActive(true);
+            globalData.resetData();
+        }
+        catch(Exception e) {
+            Debug.Log("From GameManager");
+        }
     }
 
     public void StartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void MainMenu() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void ExitGame() {
+        //For simulate in editor
+        UnityEditor.EditorApplication.isPlaying = false;
+        //For builed app
+        Application.Quit();
     }
 }

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private bool isHopping;
     private int score;
-    private int coinCount = 0;
+    //private int coinCount = 0;
     private enum Direction{
         Up,
         Down,
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Collision detecté :" + collision.collider.tag);
+        //Debug.Log("Collision detectï¿½ :" + collision.collider.tag);
         if (collision.collider.CompareTag("Evil Objects"))
         {
             KillPlayer();
@@ -72,10 +72,11 @@ public class Player : MonoBehaviour
             CoinScript coinScript = collision.gameObject.GetComponentInParent<CoinScript>();
             if (coinScript != null)
             {
-                coinCount++;
                 if (coinScript.isSpecial)
                 {
-                    // Traitement spécial pour les pièces spéciales
+                    score+=10;
+                } else {
+                    score+=5;
                 }
                 Destroy(collision.gameObject);
             }
@@ -94,6 +95,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void RectifPosition() {
+        // Get the current position
+        Vector3 currentPosition = transform.position;
+
+        // Round each component of the position
+        Vector3 roundedPosition = new Vector3(
+            Mathf.RoundToInt(currentPosition.x),
+            Mathf.RoundToInt(currentPosition.y),
+            Mathf.RoundToInt(currentPosition.z)
+        );
+
+        // Apply the rounded position to the transform
+        transform.position = roundedPosition;
+    }
+
     private void PerformMove(Vector3 difference) {
         animator.SetTrigger("hop");
         isHopping = true;
@@ -106,11 +122,14 @@ public class Player : MonoBehaviour
                 float slideAmount = 0.2f;
 
                 transform.position += slideDirection * slideAmount;
+                RectifPosition();
                 //terrainGenerator.SpawnTerrain(false, transform.position); 
         }
         else
         {
             transform.position = transform.position + difference;
+
+            RectifPosition();
             //terrainGenerator.SpawnTerrain(false, transform.position);
         }
     }
