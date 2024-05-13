@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!PauseManager.isPaused)
+        if (!PauseManager.IsPaused)
         {
             scoreText.text = "" + score;
             if (!isHopping)
@@ -67,18 +67,13 @@ public class Player : MonoBehaviour
             CoinScript coinScript = collision.gameObject.GetComponentInParent<CoinScript>();
             if (coinScript != null)
             {
-                if (coinScript.isSpecial)
-                {
-                    score+=10;
-                } else {
-                    score+=5;
-                }
+                score += coinScript.isSpecial ? 10 : 5;
                 Destroy(collision.gameObject);
             }
         }
         if (collision.collider.GetComponent<MovingObject>() != null)
         {
-            if (collision.collider.GetComponent<MovingObject>().isLog)
+            if (collision.collider.GetComponent<Log>())
             {
                 transform.parent = collision.collider.transform;
             }

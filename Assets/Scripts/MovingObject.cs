@@ -1,23 +1,23 @@
 using Assets.Scripts;
 using UnityEngine;
 
-public class MovingObject : MonoBehaviour
+public abstract class MovingObject : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    public bool isLog;
+    [SerializeField] public float speed;
 
     public float limiteZPositive = 25f;
     public float limiteZNegative = -25f;
 
     private void Update()
     {
-        if (!PauseManager.isPaused)
+        if (!PauseManager.IsPaused)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            destroyIfOutOfBound();
+            Move();
+            DestroyIfOutOfBound();
         }
     }
-    private void destroyIfOutOfBound()
+    protected abstract void Move();
+    private void DestroyIfOutOfBound()
     {
         if (transform.position.z > limiteZPositive || transform.position.z < limiteZNegative)
         {

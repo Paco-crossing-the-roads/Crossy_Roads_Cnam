@@ -25,7 +25,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (!PauseManager.isPaused)
+        if (!PauseManager.IsPaused)
         {
             if (player != null)
             {
