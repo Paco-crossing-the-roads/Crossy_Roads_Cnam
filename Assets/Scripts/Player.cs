@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private bool isHopping;
     private int score;
-    private int coinCount = 0;
+    //private int coinCount = 0;
     private enum Direction{
         Up,
         Down,
@@ -68,10 +68,11 @@ public class Player : MonoBehaviour
             CoinScript coinScript = collision.gameObject.GetComponentInParent<CoinScript>();
             if (coinScript != null)
             {
-                coinCount++;
                 if (coinScript.isSpecial)
                 {
-                    // Traitement sp�cial pour les pi�ces sp�ciales
+                    score+=10;
+                } else {
+                    score+=5;
                 }
                 Destroy(collision.gameObject);
             }
