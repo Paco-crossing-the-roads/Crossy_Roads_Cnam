@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 640787204033178279}
   - component: {fileID: 6036108574831609082}
   - component: {fileID: 579751572258399503}
-  - component: {fileID: 5573838090862472627}
   m_Layer: 0
   m_Name: Orange Ghost
   m_TagString: Evil Objects
@@ -124,18 +123,6 @@ MonoBehaviour:
   isLog: 0
   limiteZPositive: 25
   limiteZNegative: -25
---- !u!114 &5573838090862472627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4246663508390509989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3617bee5c309fb345bae547b5d455537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6272585184762661151
 PrefabInstance:
   m_ObjectHideFlags: 0

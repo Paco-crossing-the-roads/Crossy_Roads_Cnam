@@ -743,7 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
   gameOverUI: {fileID: 0}
-  pausePanelUI: {fileID: 0}
+  pausePanelUI: {fileID: 1983070578}
 --- !u!114 &840267046
 MonoBehaviour:
   m_ObjectHideFlags: 0
