@@ -72,7 +72,7 @@ public class TerrainGenerator : MonoBehaviour
         if (isSpawnable)
         {
             float fixedYOffset = 1.2f;
-            float offsetZ = Random.Range(-8f, 8f);
+            float offsetZ = Mathf.RoundToInt(Random.Range(-8f, 8f));
             Vector3 spawnPosition = position + new Vector3(0f, fixedYOffset, offsetZ);
             bool isSpecial = Random.value < 0.1f;
 

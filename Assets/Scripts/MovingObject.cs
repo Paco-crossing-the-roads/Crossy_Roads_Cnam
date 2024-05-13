@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,11 @@ public class MovingObject : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        destroyIfOutOfBound();
+        if (!PauseManager.isPaused)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            destroyIfOutOfBound();
+        }
     }
     private void destroyIfOutOfBound()
     {
