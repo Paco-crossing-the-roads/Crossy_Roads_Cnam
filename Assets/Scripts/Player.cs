@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -32,26 +33,29 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = "" + score;
-        if (!isHopping)
+        if (!PauseManager.isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            scoreText.text = "" + score;
+            if (!isHopping)
             {
-                globalData.playerHasStartedMoving = true;
-                MoveCharacter(Vector3.right, Direction.Up);
-                score++;
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                MoveCharacter(Vector3.left, Direction.Down);
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                MoveCharacter(Vector3.forward, Direction.Left);
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                MoveCharacter(Vector3.back, Direction.Right);
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    globalData.playerHasStartedMoving = true;
+                    MoveCharacter(Vector3.right, Direction.Up);
+                    score++;
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    MoveCharacter(Vector3.left, Direction.Down);
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    MoveCharacter(Vector3.forward, Direction.Left);
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    MoveCharacter(Vector3.back, Direction.Right);
+                }
             }
         }
     }
