@@ -29,6 +29,10 @@ public class GameManagerScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void MainMenu() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
     public void ExitGame() {
         //For simulate in editor
         UnityEditor.EditorApplication.isPlaying = false;
