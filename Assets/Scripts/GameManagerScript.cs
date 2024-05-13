@@ -11,7 +11,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PauseManager.isPaused = false;
     }
 
     // Update is called once per frame
