@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 223447878}
   - component: {fileID: 223447877}
+  - component: {fileID: 223447879}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -200,6 +201,8 @@ MonoBehaviour:
   globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
   gameOverUI: {fileID: 1833646053}
   pausePanelUI: {fileID: 1983070578}
+  leaderboardUI: {fileID: 0}
+  saveDataScript: {fileID: 223447879}
 --- !u!4 &223447878
 Transform:
   m_ObjectHideFlags: 0
@@ -215,6 +218,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &223447879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223447876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784a4aeb272c2424d9cefba3610210c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
 --- !u!1 &490727116
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +760,8 @@ MonoBehaviour:
   globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
   gameOverUI: {fileID: 0}
   pausePanelUI: {fileID: 1983070578}
+  leaderboardUI: {fileID: 0}
+  saveDataScript: {fileID: 0}
 --- !u!114 &840267046
 MonoBehaviour:
   m_ObjectHideFlags: 0

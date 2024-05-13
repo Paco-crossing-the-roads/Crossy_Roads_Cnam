@@ -8,6 +8,9 @@ public class GameManagerScript : MonoBehaviour
     public GlobalData globalData;
     public GameObject gameOverUI;
     public GameObject pausePanelUI;
+    public GameObject leaderboardUI;
+
+    public SaveData saveDataScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +31,17 @@ public class GameManagerScript : MonoBehaviour
     public void GameOver() {
         try {
             gameOverUI.SetActive(true);
-            globalData.resetData();
+            globalData.playerHasStartedMoving = false;
+            saveDataScript.SavePlayerData();
         }
         catch(Exception e) {
             Debug.Log("From GameManager");
         }
+    }
+
+    public void Leaderboard()
+    {
+        leaderboardUI.SetActive(true);
     }
 
     public void StartGame() {
@@ -41,6 +50,14 @@ public class GameManagerScript : MonoBehaviour
 
     public void MainMenu() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void BackFromMainMenuToMainMenu()
+    {
+        if (leaderboardUI != null)
+        {
+            leaderboardUI.SetActive(false);
+        }
     }
 
     public void ExitGame() {

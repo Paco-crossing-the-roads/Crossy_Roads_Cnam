@@ -167,6 +167,8 @@ public class Player : MonoBehaviour
 
     private void KillPlayer()
     {
+        globalData.playerScore = score;
+        globalData.playerName = "Ian";
         if (gameObject != null) {
             Destroy(gameObject);
             gameManager.GameOver();
