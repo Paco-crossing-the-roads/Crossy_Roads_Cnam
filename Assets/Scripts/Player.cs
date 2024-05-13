@@ -93,14 +93,16 @@ public class Player : MonoBehaviour
     private void PerformMove(Vector3 difference) {
         animator.SetTrigger("hop");
         isHopping = true;
-        int obstacleLayer = LayerMask.NameToLayer("obstacle");
-        if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
-        {
-            Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
-            float slideAmount = 0.2f;
 
-            transform.position += slideDirection * slideAmount;
-            //terrainGenerator.SpawnTerrain(false, transform.position);
+        string obstacleTag = "obstacle";
+        if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f)
+            && hit.collider.gameObject.CompareTag(obstacleTag))
+        {
+                Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;
+                float slideAmount = 0.2f;
+
+                transform.position += slideDirection * slideAmount;
+                //terrainGenerator.SpawnTerrain(false, transform.position); 
         }
         else
         {
