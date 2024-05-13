@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Evil Objects
+  - obstacle
+  - Coin
   layers:
   - Default
   - TransparentFX

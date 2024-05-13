@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private bool isHopping;
     private int score;
-
+    private int coinCount = 0;
     private enum Direction{
         Up,
         Down,
@@ -58,9 +58,23 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //Debug.Log("Collision detecté :" + collision.collider.tag);
         if (collision.collider.CompareTag("Evil Objects"))
         {
             KillPlayer();
+        }
+        if (collision.collider.CompareTag("Coin"))
+        {
+            CoinScript coinScript = collision.gameObject.GetComponentInParent<CoinScript>();
+            if (coinScript != null)
+            {
+                coinCount++;
+                if (coinScript.isSpecial)
+                {
+                    // Traitement spécial pour les pièces spéciales
+                }
+                Destroy(collision.gameObject);
+            }
         }
         if (collision.collider.GetComponent<MovingObject>() != null)
         {
@@ -80,7 +94,6 @@ public class Player : MonoBehaviour
         animator.SetTrigger("hop");
         isHopping = true;
         int obstacleLayer = LayerMask.NameToLayer("obstacle");
-
         if (Physics.Raycast(transform.position, difference, out RaycastHit hit, difference.magnitude + 0.1f, obstacleLayer))
         {
             Vector3 slideDirection = Vector3.ProjectOnPlane(difference, hit.normal).normalized;

@@ -1198,6 +1198,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 81042379e9ec6dadf93410c1e8336df8, type: 2}
   - {fileID: 11400000, guid: 9081fd7777bed6b419dbc925d69029d7, type: 2}
   terrainHolder: {fileID: 490727117}
+  coinPrefab: {fileID: 4915519995662546899, guid: 03a719c2fe575ab42a0cc7928e18d061, type: 3}
   currentPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1900575404
 Transform:
