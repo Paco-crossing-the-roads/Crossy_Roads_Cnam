@@ -11,7 +11,8 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PauseManager.isPaused = false;
+        if (PauseManager.IsPaused)
+            PauseManager.TogglePause();
     }
 
     // Update is called once per frame
@@ -19,7 +20,7 @@ public class GameManagerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
             PauseManager.TogglePause();
-        if (PauseManager.isPaused)
+        if (PauseManager.IsPaused)
             pausePanelUI.SetActive(true);
         else
             pausePanelUI.SetActive(false);

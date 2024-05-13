@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private TerrainGenerator terrainGenerator;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text timeText;
 
     public GameManagerScript gameManager;
 
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private bool isHopping;
     private int score;
+    private float elapsedTime;
     private enum Direction{
         Up,
         Down,
@@ -25,12 +27,17 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
+        elapsedTime = 0f;
     }
 
     private void Update()
     {
-        if (!PauseManager.isPaused)
+        if (!PauseManager.IsPaused)
         {
+            elapsedTime += Time.deltaTime;
+
+            UpdateTimeText();
+
             scoreText.text = "" + score;
             if (!isHopping)
             {
@@ -54,6 +61,14 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void UpdateTimeText()
+    {
+        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60f); 
+
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void OnCollisionEnter(Collision collision)
