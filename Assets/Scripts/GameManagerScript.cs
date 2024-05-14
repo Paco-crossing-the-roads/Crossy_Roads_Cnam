@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject pausePanelUI;
     public GameObject leaderboardUI;
+    public TMP_InputField usernameInput;
 
     public SaveData saveDataScript;
     // Start is called before the first frame update
@@ -32,8 +34,6 @@ public class GameManagerScript : MonoBehaviour
         try {
             gameOverUI.SetActive(true);
             globalData.playerHasStartedMoving = false;
-            Debug.Log(globalData.playerScore.ToString());
-            saveDataScript.SavePlayerData();
         }
         catch(Exception e) {
             Debug.Log("From GameManager");
@@ -49,7 +49,17 @@ public class GameManagerScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void MainMenu() {
+    public void MainMenu()
+    {
+        if (usernameInput.text != "")
+        {
+            globalData.playerName = usernameInput.text;
+        }
+        else
+        {
+            globalData.playerName = "unnamed";
+        }
+        saveDataScript.SavePlayerData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 

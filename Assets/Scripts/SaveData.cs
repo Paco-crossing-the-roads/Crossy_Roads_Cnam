@@ -11,6 +11,17 @@ public class SaveData : MonoBehaviour
 {
     public GlobalData globalData;
 
+    public void SortTextPlayerByScore()
+    {
+        string filePath = Path.Combine(Application.persistentDataPath, "pakupakudata.txt");
+        if (File.Exists(filePath))
+        {
+            string[] lines = File.ReadAllLines(filePath);
+            lines = lines.OrderByDescending(x => int.Parse(x.Split(',')[1])).ToArray();
+            File.WriteAllLines(filePath, lines);
+        }
+    }    
+    
     public List<string> GetLeaderBoardUsernames()
     {
         string filePath = Path.Combine(Application.persistentDataPath, "pakupakudata.txt");
@@ -48,70 +59,70 @@ public class SaveData : MonoBehaviour
     }
 
     public void SavePlayerData()
-{
-    string filePath = Path.Combine(Application.persistentDataPath, "pakupakudata.txt");
-    string username = globalData.playerName;
-    int score = globalData.playerScore;
-    string data = username + "," + score.ToString();
-
-    if (File.Exists(filePath))
     {
-        string[] lines = File.ReadAllLines(filePath);
+        string filePath = Path.Combine(Application.persistentDataPath, "pakupakudata.txt");
+        string username = globalData.playerName;
+        int score = globalData.playerScore;
+        string data = username + "," + score.ToString();
 
-        bool usernameExists = false;
-        int highestScore = 0;
-
-        for (int i = 0; i < lines.Length; i++)
+        if (File.Exists(filePath))
         {
-            string line = lines[i];
-            string[] parts = line.Split(',');
-            if (parts[0] == username)
+            string[] lines = File.ReadAllLines(filePath);
+
+            bool usernameExists = false;
+            int highestScore = 0;
+
+            for (int i = 0; i < lines.Length; i++)
             {
-                usernameExists = true;
-                int existingScore = int.Parse(parts[1]);
-                if (existingScore < score)
+                string line = lines[i];
+                string[] parts = line.Split(',');
+                if (parts[0] == username)
                 {
-                    Debug.Log("Score already saved : " + existingScore);
-                    Debug.Log("Score made : " + score);
-                    highestScore = score;
-                    lines[i] = username + "," + highestScore.ToString();
-                }
-                else
-                {
-                    Debug.Log("highest : " + existingScore);
-                    highestScore = existingScore;
+                    usernameExists = true;
+                    int existingScore = int.Parse(parts[1]);
+                    if (existingScore < score)
+                    {
+                        highestScore = score;
+                        lines[i] = username + "," + highestScore.ToString();
+                    }
+                    else
+                    {
+                        Debug.Log("highest : " + existingScore);
+                        highestScore = existingScore;
+                    }
                 }
             }
-        }
 
-        if (!usernameExists)
-        {
-            try
+            if (!usernameExists)
             {
-                File.AppendAllText(filePath, "\n" + data);
+                try
+                {
+                    File.AppendAllText(filePath, data + "\n");
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Data not saved");
+                }
             }
-            catch (Exception e)
+            else
             {
-                Debug.Log("Data not saved");
+                try
+                {
+                    File.WriteAllLines(filePath, lines);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Data not saved");
+                }
             }
         }
         else
         {
-            try
-            {
-                File.WriteAllLines(filePath, lines);
-            }
-            catch (Exception e)
-            {
-                Debug.Log("Data not saved");
-            }
+            File.WriteAllText(filePath,  data + "\n");
         }
+        
+        SortTextPlayerByScore();
     }
-    else
-    {
-        File.WriteAllText(filePath, data);
-    }
-}
 
 }
 

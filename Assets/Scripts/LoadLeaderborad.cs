@@ -24,6 +24,10 @@ public class LoadLeaderborad : MonoBehaviour
         {
             placement++;
             usernamesLeaderboard += placement.ToString() + " - " + username + "\n";
+            if (placement == 10)
+            {
+                return usernamesLeaderboard;
+            }
         }
 
         return usernamesLeaderboard;
@@ -38,6 +42,10 @@ public class LoadLeaderborad : MonoBehaviour
         {
             placement++;
             scoresLeaderboard += placement.ToString() + " - " + score + "\n";
+            if (placement == 10)
+            {
+                return scoresLeaderboard;
+            }
         }
 
         return scoresLeaderboard;

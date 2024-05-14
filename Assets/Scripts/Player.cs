@@ -174,7 +174,6 @@ public class Player : MonoBehaviour
     {
         if (gameObject != null) {
             globalData.playerScore = score;
-            globalData.playerName = "Ian";
             Destroy(gameObject);
             gameManager.GameOver();
             isDead = true;
