@@ -32,6 +32,7 @@ public class GameManagerScript : MonoBehaviour
         try {
             gameOverUI.SetActive(true);
             globalData.playerHasStartedMoving = false;
+            Debug.Log(globalData.playerScore.ToString());
             saveDataScript.SavePlayerData();
         }
         catch(Exception e) {

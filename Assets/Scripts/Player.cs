@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     private Animator animator;
     private bool isHopping;
+    private bool isDead;
     private int score;
     private enum Direction{
         Up,
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        isDead = false;
         animator = GetComponent<Animator>();
         Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
     }
@@ -162,16 +164,20 @@ public class Player : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        KillPlayer();
+        if (!isDead)
+        {
+            KillPlayer();
+        }
     }
 
     private void KillPlayer()
     {
-        globalData.playerScore = score;
-        globalData.playerName = "Ian";
         if (gameObject != null) {
+            globalData.playerScore = score;
+            globalData.playerName = "Ian";
             Destroy(gameObject);
             gameManager.GameOver();
+            isDead = true;
             Debug.Log("Player has been killed.");
         }
     }

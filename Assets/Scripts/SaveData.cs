@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using UnityEngine.AI;
 
 public class SaveData : MonoBehaviour
 {
@@ -45,52 +48,73 @@ public class SaveData : MonoBehaviour
     }
 
     public void SavePlayerData()
-    {
-        string filePath = Path.Combine(Application.persistentDataPath, "pakupakudata.txt");
-        string username = globalData.playerName;
-        int score = globalData.playerScore;
-        string data = username + "," + score.ToString();
-        
-        if (File.Exists(filePath))
-        {
-            string[] lines = File.ReadAllLines(filePath);
-            
-            bool usernameExists = false;
-            int highestScore = 0;
+{
+    string filePath = Path.Combine(Application.persistentDataPath, "pakupakudata.txt");
+    string username = globalData.playerName;
+    int score = globalData.playerScore;
+    string data = username + "," + score.ToString();
 
-            foreach (string line in lines)
+    if (File.Exists(filePath))
+    {
+        string[] lines = File.ReadAllLines(filePath);
+
+        bool usernameExists = false;
+        int highestScore = 0;
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            string[] parts = line.Split(',');
+            if (parts[0] == username)
             {
-                string[] parts = line.Split(',');
-                if (parts[0] == username)
+                usernameExists = true;
+                int existingScore = int.Parse(parts[1]);
+                if (existingScore < score)
                 {
-                    usernameExists = true;
-                    if (int.Parse(parts[1]) < score)
-                    {
-                        highestScore = score;
-                    }
-                    else
-                    {
-                        highestScore = int.Parse(parts[1]);
-                    }
+                    Debug.Log("Score already saved : " + existingScore);
+                    Debug.Log("Score made : " + score);
+                    highestScore = score;
+                    lines[i] = username + "," + highestScore.ToString(); // Update the line with the new highest score
+                }
+                else
+                {
+                    Debug.Log("highest : " + existingScore);
+                    highestScore = existingScore;
                 }
             }
-            
-            if (usernameExists && highestScore < score)
-            {
-                string newLine = username + "," + score.ToString();
-                File.WriteAllLines(filePath, lines.Select(line => line.Replace(data, newLine)).ToArray());
-            }
-            else if (!usernameExists)
+        }
+
+        if (!usernameExists)
+        {
+            // If username doesn't exist in the file, append the new data
+            try
             {
                 File.AppendAllText(filePath, "\n" + data);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Data not saved");
             }
         }
         else
         {
-            File.WriteAllText(filePath, data);
+            // Write all the lines back to the file after updating
+            try
+            {
+                File.WriteAllLines(filePath, lines);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Data not saved");
+            }
         }
-
-        //Debug.Log("Saved at : " + Application.persistentDataPath);
     }
+    else
+    {
+        // If file doesn't exist, create a new one with the data
+        File.WriteAllText(filePath, data);
+    }
+}
+
 }
 
