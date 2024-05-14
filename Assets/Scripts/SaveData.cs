@@ -74,7 +74,7 @@ public class SaveData : MonoBehaviour
                     Debug.Log("Score already saved : " + existingScore);
                     Debug.Log("Score made : " + score);
                     highestScore = score;
-                    lines[i] = username + "," + highestScore.ToString(); // Update the line with the new highest score
+                    lines[i] = username + "," + highestScore.ToString();
                 }
                 else
                 {
@@ -86,7 +86,6 @@ public class SaveData : MonoBehaviour
 
         if (!usernameExists)
         {
-            // If username doesn't exist in the file, append the new data
             try
             {
                 File.AppendAllText(filePath, "\n" + data);
@@ -98,7 +97,6 @@ public class SaveData : MonoBehaviour
         }
         else
         {
-            // Write all the lines back to the file after updating
             try
             {
                 File.WriteAllLines(filePath, lines);
@@ -111,7 +109,6 @@ public class SaveData : MonoBehaviour
     }
     else
     {
-        // If file doesn't exist, create a new one with the data
         File.WriteAllText(filePath, data);
     }
 }
