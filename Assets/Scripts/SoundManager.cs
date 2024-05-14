@@ -4,7 +4,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     public AudioSource sfxSource;
-
+    private float volume = 1f;
     private void Awake()
     {
         if (instance == null)
@@ -20,8 +20,14 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PlaySFX(AudioClip clip, float volumeScale = 1f)
     {
         sfxSource.PlayOneShot(clip);
+    }
+
+    public void SetVolume(float newVolume)
+    {
+        volume = Mathf.Clamp01(newVolume);
+        sfxSource.volume = volume;
     }
 }
