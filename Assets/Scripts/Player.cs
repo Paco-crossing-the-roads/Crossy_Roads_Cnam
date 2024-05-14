@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public GameManagerScript gameManager;
 
     public GlobalData globalData;
+    public AudioClip coinSound;
 
     private Animator animator;
     private bool isHopping;
@@ -88,6 +89,7 @@ public class Player : MonoBehaviour
                 } else {
                     score+=5;
                 }
+                SoundManager.instance.PlaySFX(coinSound);
                 Destroy(collision.gameObject);
             }
         }
