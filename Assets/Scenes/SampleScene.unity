@@ -2656,6 +2656,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1951411037}
     - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 579d3b15135d4f34b8c554276f095c61, type: 3}
+    - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: globalData
       value: 
       objectReference: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
