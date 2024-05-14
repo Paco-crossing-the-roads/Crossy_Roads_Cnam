@@ -27,13 +27,13 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public void GameOver() {
-        try {
+        //try {
             gameOverUI.SetActive(true);
             globalData.resetData();
-        }
+        /*}
         catch(Exception e) {
             Debug.Log("From GameManager");
-        }
+        }*/
     }
 
     public void StartGame() {

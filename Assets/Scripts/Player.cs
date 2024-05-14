@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     public GlobalData globalData;
     public AudioClip coinSound;
+    public AudioClip deathSound;
 
     private Animator animator;
     private bool isHopping;
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
+        //Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
         elapsedTime = 0f;
     }
 
@@ -184,7 +185,9 @@ public class Player : MonoBehaviour
 
     private void KillPlayer()
     {
-        if (gameObject != null) {
+        if (gameObject != null)
+        {
+            SoundManager.instance.PlaySFX(deathSound);
             Destroy(gameObject);
             gameManager.GameOver();
             Debug.Log("Player has been killed.");
