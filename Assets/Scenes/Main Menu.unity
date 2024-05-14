@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -976,6 +976,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 0}
   pausePanelUI: {fileID: 0}
   leaderboardUI: {fileID: 0}
+  saveDataScript: {fileID: 0}
 --- !u!1 &1393329868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1127,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 0}
   pausePanelUI: {fileID: 0}
   leaderboardUI: {fileID: 0}
+  saveDataScript: {fileID: 0}
 --- !u!1 &1601713141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,6 +1445,8 @@ GameObject:
   - component: {fileID: 1636236185}
   - component: {fileID: 1636236184}
   - component: {fileID: 1636236187}
+  - component: {fileID: 1636236189}
+  - component: {fileID: 1636236188}
   m_Layer: 5
   m_Name: ScoreBtn
   m_TagString: Untagged
@@ -1526,6 +1530,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1636236189}
+        m_TargetAssemblyTypeName: LoadLeaderborad, Assembly-CSharp
+        m_MethodName: LoadLeaderBoard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1636236185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1580,6 +1596,35 @@ MonoBehaviour:
   gameOverUI: {fileID: 0}
   pausePanelUI: {fileID: 0}
   leaderboardUI: {fileID: 1980794238}
+  saveDataScript: {fileID: 0}
+--- !u!114 &1636236188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636236182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784a4aeb272c2424d9cefba3610210c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalData: {fileID: 0}
+--- !u!114 &1636236189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636236182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99c3d357ba13b29db687de30c5a39e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveDataScript: {fileID: 1636236188}
+  usernamesText: {fileID: 1737060090}
+  scoreText: {fileID: 1004113896}
 --- !u!1 &1649932446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2173,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 0}
   pausePanelUI: {fileID: 0}
   leaderboardUI: {fileID: 1980794238}
+  saveDataScript: {fileID: 0}
 --- !u!114 &1767110893
 MonoBehaviour:
   m_ObjectHideFlags: 0
