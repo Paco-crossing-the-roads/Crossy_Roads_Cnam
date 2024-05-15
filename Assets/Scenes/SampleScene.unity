@@ -1489,10 +1489,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistanceFromPlayer: 50
-  maxTerrainCount: 50
+  maxTerrainCount: 60
   terrainDatas:
   - {fileID: 11400000, guid: d49dd360cb37de14da27d48a986c770b, type: 2}
   - {fileID: 11400000, guid: 84517f167f605be4bbb062500865c9b4, type: 2}
+  - {fileID: 11400000, guid: 8541e5e894fc23245830bda09ebea5c5, type: 2}
   - {fileID: 11400000, guid: 0e7b8d669db367743be8b781c04ddd0c, type: 2}
   - {fileID: 11400000, guid: 81042379e9ec6dadf93410c1e8336df8, type: 2}
   - {fileID: 11400000, guid: 9081fd7777bed6b419dbc925d69029d7, type: 2}
