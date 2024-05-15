@@ -18,12 +18,14 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-            PauseManager.TogglePause();
-        if (PauseManager.IsPaused)
-            pausePanelUI.SetActive(true);
-        else
-            pausePanelUI.SetActive(false);
+        if (pausePanelUI != null) {
+            if (Input.GetKeyDown(KeyCode.P))
+                PauseManager.TogglePause();
+            if (PauseManager.IsPaused)
+                pausePanelUI.SetActive(true);
+            else
+                pausePanelUI.SetActive(false);
+        }
     }
 
     public void GameOver() {
