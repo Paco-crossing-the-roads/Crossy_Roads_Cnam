@@ -11,7 +11,7 @@ public class MovingObject : MonoBehaviour
 
     private void Update()
     {
-        if (!PauseManager.isPaused)
+        if (!PauseManager.IsPaused)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
             destroyIfOutOfBound();
