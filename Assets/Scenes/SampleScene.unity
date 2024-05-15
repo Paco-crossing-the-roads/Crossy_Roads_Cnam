@@ -806,9 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d90553201c6146109e1afe720dfd00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usernameInput: {fileID: 0}
-  globalData: {fileID: 0}
-  saveDataScript: {fileID: 0}
 --- !u!114 &699729007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3208,6 +3205,10 @@ PrefabInstance:
       propertyPath: coinSound
       value: 
       objectReference: {fileID: 8300000, guid: f76ce34b95f72f443b3b9cc8d9a04bfb, type: 3}
+    - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
+      propertyPath: gameSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 264ba97ae626ef74589014857e21e0f4, type: 3}
     - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: scoreText
       value: 
