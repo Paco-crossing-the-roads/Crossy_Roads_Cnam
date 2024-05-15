@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     private Animator animator;
     private bool isHopping;
+    private bool isDead;
     private int score;
     private float elapsedTime;
     private enum Direction{
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        isDead = false;
         animator = GetComponent<Animator>();
         //Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
         elapsedTime = 0f;
@@ -180,7 +182,10 @@ public class Player : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        KillPlayer();
+        if (!isDead)
+        {
+            KillPlayer();
+        }
     }
 
     private void KillPlayer()
@@ -188,8 +193,10 @@ public class Player : MonoBehaviour
         if (gameObject != null)
         {
             SoundManager.instance.PlaySFX(deathSound);
+            globalData.playerScore = score;
             Destroy(gameObject);
             gameManager.GameOver();
+            isDead = true;
             Debug.Log("Player has been killed.");
         }
     }
