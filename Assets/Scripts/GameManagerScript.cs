@@ -8,23 +8,28 @@ public class GameManagerScript : MonoBehaviour
     public GlobalData globalData;
     public GameObject gameOverUI;
     public GameObject pausePanelUI;
-    // Start is called before the first frame update
+
     void Start()
     {
         if (PauseManager.IsPaused)
             PauseManager.TogglePause();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (pausePanelUI != null) {
             if (Input.GetKeyDown(KeyCode.P))
+            {
                 PauseManager.TogglePause();
-            if (PauseManager.IsPaused)
+            }
+            else if (PauseManager.IsPaused)
+            {
                 pausePanelUI.SetActive(true);
+            }
             else
+            {
                 pausePanelUI.SetActive(false);
+            }
         }
     }
 
@@ -40,6 +45,11 @@ public class GameManagerScript : MonoBehaviour
 
     public void StartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void OnRestartButtonClick()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu() {
