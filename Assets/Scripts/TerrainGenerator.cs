@@ -18,11 +18,11 @@ public class TerrainGenerator : MonoBehaviour
         currentPosition.x -= 10;
         for (int i = 0; i < 4; i++)
         {
-            InitialTerrain(4);
+            InitialTerrain(5);
         }
         for (int i = 4; i < 13; i++)
         {
-            InitialTerrain(3);
+            InitialTerrain(4);
         }
 
         for (int i = 13; i < maxTerrainCount; i++)
@@ -51,7 +51,14 @@ public class TerrainGenerator : MonoBehaviour
                 GameObject terrain = Instantiate(terrainDatas[whichTerrain].possibleTerrain[Random.Range(0, terrainDatas[whichTerrain].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
                 currentTerrains.Add(terrain);
                 SpawnCoin(currentPosition);
-                currentPosition.x++;
+                if (whichTerrain == 3)
+                {
+                    currentPosition.x += 2;
+                }
+                else
+                {
+                    currentPosition.x++;
+                }
             }
             if (!isStart)
             {

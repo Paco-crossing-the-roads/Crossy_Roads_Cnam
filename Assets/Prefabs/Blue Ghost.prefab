@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1219712445697182316}
   - component: {fileID: 640787204033178279}
   - component: {fileID: 6036108574831609082}
-  - component: {fileID: 579751572258399503}
+  - component: {fileID: 1699717332012720645}
   m_Layer: 0
   m_Name: Blue Ghost
   m_TagString: Evil Objects
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2, y: 2.7873983, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0.82}
---- !u!114 &579751572258399503
+--- !u!114 &1699717332012720645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,11 +116,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4246663508390509989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7992563dd47437448af3668adc6a67c1, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2c37c7efa5f3d4a831777f9c2f5fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  isLog: 0
+  speed: 3
   limiteZPositive: 25
   limiteZNegative: -25
 --- !u!1001 &6272585184762661151

@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     private bool isDead;
     private int score;
     private float elapsedTime;
+
+    private int scoreBack;
+
     private enum Direction{
         Up,
         Down,
@@ -30,8 +33,13 @@ public class Player : MonoBehaviour
     {
         isDead = false;
         animator = GetComponent<Animator>();
+
         //Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
         elapsedTime = 0f;
+
+        scoreBack = 0;
+        Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
+
     }
 
     private void Update()
@@ -43,17 +51,27 @@ public class Player : MonoBehaviour
             UpdateTimeText();
 
             scoreText.text = "" + score;
+
             if (!isHopping)
             {
+
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     globalData.playerHasStartedMoving = true;
                     MoveCharacter(Vector3.right, Direction.Up);
-                    score++;
+                    if (scoreBack == 0)
+                    {
+                        score++;
+                    }
+                    else
+                    {
+                        scoreBack--;
+                    }
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     MoveCharacter(Vector3.left, Direction.Down);
+                    scoreBack++;
                 }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
@@ -70,7 +88,7 @@ public class Player : MonoBehaviour
     private void UpdateTimeText()
     {
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60f); 
+        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
@@ -86,19 +104,14 @@ public class Player : MonoBehaviour
             CoinScript coinScript = collision.gameObject.GetComponentInParent<CoinScript>();
             if (coinScript != null)
             {
-                if (coinScript.isSpecial)
-                {
-                    score+=10;
-                } else {
-                    score+=5;
-                }
+                score += coinScript.isSpecial ? 10 : 5;
                 SoundManager.instance.PlaySFX(coinSound);
                 Destroy(collision.gameObject);
             }
         }
         if (collision.collider.GetComponent<MovingObject>() != null)
         {
-            if (collision.collider.GetComponent<MovingObject>().isLog)
+            if (collision.collider.GetComponent<Log>())
             {
                 transform.parent = collision.collider.transform;
             }
@@ -111,17 +124,14 @@ public class Player : MonoBehaviour
     }
 
     private void RectifPosition() {
-        // Get the current position
         Vector3 currentPosition = transform.position;
 
-        // Round each component of the position
         Vector3 roundedPosition = new Vector3(
             Mathf.RoundToInt(currentPosition.x),
             Mathf.RoundToInt(currentPosition.y),
             Mathf.RoundToInt(currentPosition.z)
         );
 
-        // Apply the rounded position to the transform
         transform.position = roundedPosition;
     }
 
@@ -138,14 +148,12 @@ public class Player : MonoBehaviour
 
                 transform.position += slideDirection * slideAmount;
                 RectifPosition();
-                //terrainGenerator.SpawnTerrain(false, transform.position); 
         }
         else
         {
             transform.position = transform.position + difference;
 
             RectifPosition();
-            //terrainGenerator.SpawnTerrain(false, transform.position);
         }
     }
 

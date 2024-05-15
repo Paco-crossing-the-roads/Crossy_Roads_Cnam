@@ -13,28 +13,40 @@ public class GameManagerScript : MonoBehaviour
     public TMP_InputField usernameInput;
 
     public SaveData saveDataScript;
-    // Start is called before the first frame update
+
     void Start()
     {
         if (PauseManager.IsPaused)
             PauseManager.TogglePause();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-            PauseManager.TogglePause();
-        if (PauseManager.IsPaused)
-            pausePanelUI.SetActive(true);
-        else
-            pausePanelUI.SetActive(false);
+        if (pausePanelUI != null) {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                PauseManager.TogglePause();
+            }
+            else if (PauseManager.IsPaused)
+            {
+                pausePanelUI.SetActive(true);
+            }
+            else
+            {
+                pausePanelUI.SetActive(false);
+            }
+        }
     }
 
     public void GameOver() {
-        gameOverUI.SetActive(true);
-        globalData.playerHasStartedMoving = false;
-        globalData.resetData();
+        try {
+            gameOverUI.SetActive(true);
+            globalData.playerHasStartedMoving = false;
+            globalData.resetData();
+        }
+        catch(Exception e) {
+            Debug.Log("From GameManager");
+        }
     }
 
     public void Leaderboard()
@@ -44,6 +56,12 @@ public class GameManagerScript : MonoBehaviour
 
     public void StartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+
+    public void OnRestartButtonClick()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()

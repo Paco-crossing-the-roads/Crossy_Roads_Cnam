@@ -46,11 +46,6 @@ public class FollowPlayer : MonoBehaviour
                 }
                 else
                 {
-                    // // Smoothly follow the player's position with the specified offset
-                    // Vector3 newPosition = Vector3.Lerp(transform.position, player.transform.position + offset, Time.deltaTime * smoothness);
-                    // // Ensure the camera's y position remains constant unless specified otherwise
-                    // newPosition.y = transform.position.y;
-                    // transform.position = newPosition;
                     transform.position = Vector3.Lerp(transform.position, player.transform.position + startingOffset, smoothness);
                 }
             }
