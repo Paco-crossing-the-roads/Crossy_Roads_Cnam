@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private bool isHopping;
     private int score;
+    private int scoreBack;
     private enum Direction{
         Up,
         Down,
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        scoreBack = 0;
         Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
     }
 
@@ -32,17 +34,28 @@ public class Player : MonoBehaviour
         if (!PauseManager.IsPaused)
         {
             scoreText.text = "" + score;
+
             if (!isHopping)
             {
+                float currentPositionX = transform.position.x;
+
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     globalData.playerHasStartedMoving = true;
                     MoveCharacter(Vector3.right, Direction.Up);
-                    score++;
+                    if (scoreBack == 0)
+                    {
+                        score++;
+                    }
+                    else
+                    {
+                        scoreBack--;
+                    }
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     MoveCharacter(Vector3.left, Direction.Down);
+                    scoreBack++;
                 }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
@@ -86,17 +99,14 @@ public class Player : MonoBehaviour
     }
 
     private void RectifPosition() {
-        // Get the current position
         Vector3 currentPosition = transform.position;
 
-        // Round each component of the position
         Vector3 roundedPosition = new Vector3(
             Mathf.RoundToInt(currentPosition.x),
             Mathf.RoundToInt(currentPosition.y),
             Mathf.RoundToInt(currentPosition.z)
         );
 
-        // Apply the rounded position to the transform
         transform.position = roundedPosition;
     }
 
@@ -113,14 +123,12 @@ public class Player : MonoBehaviour
 
                 transform.position += slideDirection * slideAmount;
                 RectifPosition();
-                //terrainGenerator.SpawnTerrain(false, transform.position); 
         }
         else
         {
             transform.position = transform.position + difference;
 
             RectifPosition();
-            //terrainGenerator.SpawnTerrain(false, transform.position);
         }
     }
 
