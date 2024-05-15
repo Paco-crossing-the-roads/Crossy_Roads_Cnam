@@ -11,8 +11,8 @@ public class GameManagerScript : MonoBehaviour
     public GameObject pausePanelUI;
     public GameObject leaderboardUI;
     public TMP_InputField usernameInput;
-
     public SaveData saveDataScript;
+    // public AudioClip gameSound;
 
     void Start()
     {
@@ -58,9 +58,22 @@ public class GameManagerScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    // public void GameSound() {
+    //     SoundManager.instance.PlaySFX(gameSound);
+    // }
+
 
     public void OnRestartButtonClick()
     {
+        if (usernameInput.text != "")
+        {
+            globalData.playerName = usernameInput.text;
+        }
+        else
+        {
+            globalData.playerName = "unnamed";
+        }
+        saveDataScript.SavePlayerData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
