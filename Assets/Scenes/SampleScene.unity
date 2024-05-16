@@ -342,6 +342,7 @@ MonoBehaviour:
   saveDataScript: {fileID: 223447879}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
+  menuMusic: {fileID: 0}
 --- !u!4 &223447878
 Transform:
   m_ObjectHideFlags: 0
@@ -800,6 +801,7 @@ MonoBehaviour:
   saveDataScript: {fileID: 840267050}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: be60b6861660df44cbb911d16b320880, type: 3}
 --- !u!114 &699729007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,6 +1146,7 @@ MonoBehaviour:
   saveDataScript: {fileID: 746810725}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 8300000, guid: 264ba97ae626ef74589014857e21e0f4, type: 3}
+  menuMusic: {fileID: 0}
 --- !u!114 &746810725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1353,6 +1356,7 @@ MonoBehaviour:
   saveDataScript: {fileID: 840267050}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: be60b6861660df44cbb911d16b320880, type: 3}
 --- !u!114 &840267047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3198,6 +3202,7 @@ MonoBehaviour:
   saveDataScript: {fileID: 840267050}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
+  menuMusic: {fileID: 0}
 --- !u!1001 &9142362031770551543
 PrefabInstance:
   m_ObjectHideFlags: 0
