@@ -340,6 +340,7 @@ MonoBehaviour:
   usernameInput: {fileID: 0}
   settingText: {fileID: 0}
   saveDataScript: {fileID: 223447879}
+  settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
 --- !u!4 &223447878
 Transform:
@@ -797,6 +798,7 @@ MonoBehaviour:
   usernameInput: {fileID: 594448957}
   settingText: {fileID: 0}
   saveDataScript: {fileID: 840267050}
+  settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
 --- !u!114 &699729007
 MonoBehaviour:
@@ -1140,6 +1142,7 @@ MonoBehaviour:
   usernameInput: {fileID: 594448957}
   settingText: {fileID: 0}
   saveDataScript: {fileID: 746810725}
+  settingSound: {fileID: 0}
   gameMusic: {fileID: 8300000, guid: 264ba97ae626ef74589014857e21e0f4, type: 3}
 --- !u!114 &746810725
 MonoBehaviour:
@@ -1348,6 +1351,7 @@ MonoBehaviour:
   usernameInput: {fileID: 594448957}
   settingText: {fileID: 0}
   saveDataScript: {fileID: 840267050}
+  settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
 --- !u!114 &840267047
 MonoBehaviour:
@@ -3192,6 +3196,7 @@ MonoBehaviour:
   usernameInput: {fileID: 594448957}
   settingText: {fileID: 0}
   saveDataScript: {fileID: 840267050}
+  settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
 --- !u!1001 &9142362031770551543
 PrefabInstance:
@@ -3221,6 +3226,10 @@ PrefabInstance:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: 579d3b15135d4f34b8c554276f095c61, type: 3}
+    - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
+      propertyPath: fiftySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b8c8c242ae3fb44bb9bd2004595e6c2, type: 3}
     - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: globalData
       value: 
@@ -3272,6 +3281,10 @@ PrefabInstance:
     - target: {fileID: 2228655484221009164, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4216905788712623490, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6342077181979276576, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: m_Name
