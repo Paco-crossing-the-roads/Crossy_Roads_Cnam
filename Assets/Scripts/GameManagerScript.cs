@@ -11,18 +11,22 @@ public class GameManagerScript : MonoBehaviour
     public GameObject pausePanelUI;
     public GameObject leaderboardUI;
     public TMP_InputField usernameInput;
+    public TMP_Text settingText;
     public SaveData saveDataScript;
-    // public AudioClip gameSound;
+    public AudioClip gameMusic;
 
     void Start()
     {
         if (PauseManager.IsPaused)
             PauseManager.TogglePause();
+
+        settingText.text = SoundManager.instance.GetVolume() == 0 ? "Volume off" : "Volume on";
     }
 
     void Update()
     {
-        if (pausePanelUI != null) {
+        if (pausePanelUI != null)
+        {
             if (Input.GetKeyDown(KeyCode.P))
             {
                 PauseManager.TogglePause();
@@ -56,15 +60,12 @@ public class GameManagerScript : MonoBehaviour
 
     public void StartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SoundManager.instance.PlayMusic(gameMusic);
     }
-
-    // public void GameSound() {
-    //     SoundManager.instance.PlaySFX(gameSound);
-    // }
-
 
     public void OnRestartButtonClick()
     {
+        SoundManager.instance.PlayMusic(gameMusic);
         if (usernameInput.text != "")
         {
             globalData.playerName = usernameInput.text;
@@ -75,6 +76,12 @@ public class GameManagerScript : MonoBehaviour
         }
         saveDataScript.SavePlayerData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnSettingButtonClick()
+    {
+        SoundManager.instance.TriggerOnOffSound();
+        settingText.text = SoundManager.instance.GetVolume() == 0 ? "Volume off" : "Volume on";
     }
 
     public void MainMenu()

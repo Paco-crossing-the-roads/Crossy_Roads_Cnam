@@ -200,6 +200,7 @@ public class Player : MonoBehaviour
     {
         if (gameObject != null)
         {
+            SoundManager.instance.StopMusic();
             SoundManager.instance.PlaySFX(deathSound);
             globalData.playerScore = score;
             Destroy(gameObject);
