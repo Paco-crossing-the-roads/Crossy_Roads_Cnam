@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 746810722}
   - component: {fileID: 746810721}
   - component: {fileID: 746810724}
+  - component: {fileID: 746810725}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -1141,11 +1142,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
-  gameOverUI: {fileID: 0}
+  gameOverUI: {fileID: 1833646053}
   pausePanelUI: {fileID: 1983070578}
   leaderboardUI: {fileID: 0}
-  usernameInput: {fileID: 0}
-  saveDataScript: {fileID: 0}
+  usernameInput: {fileID: 594448957}
+  saveDataScript: {fileID: 746810725}
+--- !u!114 &746810725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746810718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784a4aeb272c2424d9cefba3610210c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
 --- !u!1 &801678257
 GameObject:
   m_ObjectHideFlags: 0
