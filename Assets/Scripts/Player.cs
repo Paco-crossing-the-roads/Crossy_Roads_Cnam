@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private bool isHopping;
     private bool isDead;
     private int score;
+    private int lastMultipleOfFifty = 0;
     private float elapsedTime;
     private int scoreBack;
 
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         elapsedTime = 0f;
 
         scoreBack = 0;
+        lastMultipleOfFifty = 0;
         score = 0;
         Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
 
@@ -44,6 +46,13 @@ public class Player : MonoBehaviour
     {
         if (!PauseManager.IsPaused)
         {
+            int currentMultipleOfFifty = score / 50;
+            if (currentMultipleOfFifty > lastMultipleOfFifty)
+            {
+                SoundManager.instance.PlaySFX(fiftySound);
+                lastMultipleOfFifty = currentMultipleOfFifty;
+            }
+
             elapsedTime += Time.deltaTime;
 
             UpdateTimeText();
