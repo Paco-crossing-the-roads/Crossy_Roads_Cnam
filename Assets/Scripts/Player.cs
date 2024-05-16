@@ -7,19 +7,16 @@ public class Player : MonoBehaviour
     [SerializeField] private TerrainGenerator terrainGenerator;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text timeText;
-
     public GameManagerScript gameManager;
-
     public GlobalData globalData;
     public AudioClip coinSound;
     public AudioClip deathSound;
-
+    public AudioClip fiftySound;
     private Animator animator;
     private bool isHopping;
     private bool isDead;
     private int score;
     private float elapsedTime;
-
     private int scoreBack;
 
     private enum Direction{
@@ -38,6 +35,7 @@ public class Player : MonoBehaviour
         elapsedTime = 0f;
 
         scoreBack = 0;
+        score = 0;
         Debug.Log("GlobalData from Player Script : " + globalData.playerHasStartedMoving.ToString());
 
     }
