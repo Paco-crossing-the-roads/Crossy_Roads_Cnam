@@ -13,14 +13,17 @@ public class GameManagerScript : MonoBehaviour
     public TMP_InputField usernameInput;
     public TMP_Text settingText;
     public SaveData saveDataScript;
+    public AudioClip settingSound;
     public AudioClip gameMusic;
 
     void Start()
     {
         if (PauseManager.IsPaused)
             PauseManager.TogglePause();
-
-        settingText.text = SoundManager.instance.GetVolume() == 0 ? "Volume off" : "Volume on";
+        if (settingText != null)
+        {
+            settingText.text = SoundManager.instance.GetVolume() == 0 ? "Volume off" : "Volume on";
+        }
     }
 
     void Update()
@@ -82,6 +85,7 @@ public class GameManagerScript : MonoBehaviour
     {
         SoundManager.instance.TriggerOnOffSound();
         settingText.text = SoundManager.instance.GetVolume() == 0 ? "Volume off" : "Volume on";
+        SoundManager.instance.PlaySFX(settingSound);
     }
 
     public void MainMenu()
