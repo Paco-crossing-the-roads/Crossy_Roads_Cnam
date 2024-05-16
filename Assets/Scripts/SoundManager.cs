@@ -48,6 +48,13 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void PauseMusic() {
+        musicSource.Pause();
+    }
+    public void RestartMusic() {
+        musicSource.UnPause();
+    }
+
     public void StopMusic() {
         musicSource.Stop();
     }
