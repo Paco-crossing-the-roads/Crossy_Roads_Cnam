@@ -50,7 +50,10 @@ public class TerrainGenerator : MonoBehaviour
             {
                 GameObject terrain = Instantiate(terrainDatas[whichTerrain].possibleTerrain[Random.Range(0, terrainDatas[whichTerrain].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
                 currentTerrains.Add(terrain);
-                SpawnCoin(currentPosition);
+                if (!terrain.name.Contains("Water"))
+                {
+                    SpawnCoin(currentPosition);
+                }
                 if (whichTerrain == 3)
                 {
                     currentPosition.x += 2;
@@ -73,7 +76,7 @@ public class TerrainGenerator : MonoBehaviour
 
     private void SpawnCoin(Vector3 position)
     {
-        bool isSpawnable = Random.value < 0.2f;
+        bool isSpawnable = Random.value < 0.4f;
         if (isSpawnable)
         {
             float fixedYOffset = 1.2f;
