@@ -205,15 +205,27 @@ public class Player : MonoBehaviour
 
     private void KillPlayer()
     {
-        if (gameObject != null)
+        if (isDead)
+        {
+            return;
+        }
+
+        isDead = true;
+
+        if (SoundManager.instance != null)
         {
             SoundManager.instance.StopMusic();
             SoundManager.instance.PlaySFX(deathSound);
-            globalData.playerScore = score;
-            Destroy(gameObject);
-            gameManager.GameOver();
-            isDead = true;
-            Debug.Log("Player has been killed.");
         }
+
+        globalData.playerScore = score;
+
+        if (gameObject != null)
+        {
+            gameManager.GameOver();
+            Destroy(gameObject);
+        }
+
+        Debug.Log("Player has been killed.");
     }
 }
