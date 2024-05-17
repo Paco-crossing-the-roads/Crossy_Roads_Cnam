@@ -3,7 +3,11 @@ guid: 3516c6f2783a89e4e8b1174b41db211c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - terrainGenerator: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - gameManager: {instanceID: 0}
+  - globalData: {fileID: 11400000, guid: 3fb64a3cf771aa340bd7710af1aff528, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
