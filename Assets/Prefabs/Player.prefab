@@ -50,7 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainGenerator: {fileID: 0}
   scoreText: {fileID: 0}
+  timeText: {fileID: 0}
   gameManager: {fileID: 0}
+  globalData: {fileID: 0}
+  coinSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  fiftySound: {fileID: 0}
 --- !u!65 &7757860982611244353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70,8 +75,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.86197263, y: 0.8404373, z: 0.3187158}
-  m_Center: {x: -0.012216896, y: -0.09816736, z: 0.00865522}
+  m_Size: {x: 0.8, y: 0.8404373, z: 0.3187158}
+  m_Center: {x: 0, y: -0.09, z: 0}
 --- !u!95 &4216905788712623490
 Animator:
   serializedVersion: 5

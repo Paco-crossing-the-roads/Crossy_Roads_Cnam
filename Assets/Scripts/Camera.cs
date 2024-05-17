@@ -10,7 +10,7 @@ public class Camera : MonoBehaviour
 
     public GlobalData globalData;
     public bool autoMove = false; // Initially set to false
-    public float speed = 0.25f;
+    public float speed = 0.8f;
 
     private bool playerHasStartedMoving = false; // Flag to track if the player has started moving
 
