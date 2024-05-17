@@ -112,7 +112,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void ExitGame() {
         //For simulate in editor
-        UnityEditor.EditorApplication.isPlaying = false;
+        // UnityEditor.EditorApplication.isPlaying = false;
         //For builed app
         Application.Quit();
     }
