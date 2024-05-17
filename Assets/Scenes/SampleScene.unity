@@ -342,7 +342,6 @@ MonoBehaviour:
   saveDataScript: {fileID: 223447879}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
-  menuMusic: {fileID: 0}
 --- !u!4 &223447878
 Transform:
   m_ObjectHideFlags: 0
@@ -801,7 +800,6 @@ MonoBehaviour:
   saveDataScript: {fileID: 840267050}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
-  menuMusic: {fileID: 8300000, guid: be60b6861660df44cbb911d16b320880, type: 3}
 --- !u!114 &699729007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +1144,6 @@ MonoBehaviour:
   saveDataScript: {fileID: 746810725}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 8300000, guid: 264ba97ae626ef74589014857e21e0f4, type: 3}
-  menuMusic: {fileID: 0}
 --- !u!114 &746810725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,7 +1353,6 @@ MonoBehaviour:
   saveDataScript: {fileID: 840267050}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
-  menuMusic: {fileID: 8300000, guid: be60b6861660df44cbb911d16b320880, type: 3}
 --- !u!114 &840267047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3202,7 +3198,6 @@ MonoBehaviour:
   saveDataScript: {fileID: 840267050}
   settingSound: {fileID: 0}
   gameMusic: {fileID: 0}
-  menuMusic: {fileID: 0}
 --- !u!1001 &9142362031770551543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3234,7 +3229,7 @@ PrefabInstance:
     - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: fiftySound
       value: 
-      objectReference: {fileID: 8300000, guid: 2a106184bbe17fb449529b80f0e4e57f, type: 3}
+      objectReference: {fileID: 8300000, guid: bf2e98de9f81614419dbaa79027f16c4, type: 3}
     - target: {fileID: 2005170794011209561, guid: ba90d1153ea82524891d640b3f5990f9, type: 3}
       propertyPath: globalData
       value: 
